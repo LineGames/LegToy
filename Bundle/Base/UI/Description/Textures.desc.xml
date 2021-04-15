@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<ImportTexture name="UITex" src="ui_texture" />
+	<Import name="UIPatch" unit="Texture.UI.Patch" />
+</UIDesc>

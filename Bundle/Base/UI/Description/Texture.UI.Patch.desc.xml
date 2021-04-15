@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<Import name="Texture" unit="Textures" />
+	<Alias name="MainUITexture" for="Texture:UITex" />
+	
+	<TextureSlice name="btn3_Normal" texture="MainUITexture:btn3_Normal"  cut0="60" cut1="-6" orientation="vertical"/>
+	<TextureSlice name="btn3_Normal.T" texture="btn3_Normal:0" cut0="60" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_Normal.M" texture="btn3_Normal:1" cut0="60" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_Normal.B" texture="btn3_Normal:2" cut0="60" cut1="-3" orientation="horizontal" />
+	<NinePatchClass name="btn_Normal"
+		lt="btn3_Normal.T:0" ct="btn3_Normal.T:1" rt="btn3_Normal.T:2" 
+		lm="btn3_Normal.M:0" cm="btn3_Normal.M:1" rm="btn3_Normal.M:2" 
+		lb="btn3_Normal.B:0" cb="btn3_Normal.B:1" rb="btn3_Normal.B:2" />
+	
+	<TextureSlice name="btn3_Push" texture="MainUITexture:btn3_Push"  cut0="60" cut1="-6" orientation="vertical"/>
+	<TextureSlice name="btn3_Push.T" texture="btn3_Push:0" cut0="60" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_Push.M" texture="btn3_Push:1" cut0="60" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_Push.B" texture="btn3_Push:2" cut0="60" cut1="-3" orientation="horizontal" />
+	<NinePatchClass name="btn_Push"
+		lt="btn3_Push.T:0" ct="btn3_Push.T:1" rt="btn3_Push.T:2" 
+		lm="btn3_Push.M:0" cm="btn3_Push.M:1" rm="btn3_Push.M:2" 
+		lb="btn3_Push.B:0" cb="btn3_Push.B:1" rb="btn3_Push.B:2" />
+		
+	<TextureSlice name="btn3_Select" texture="MainUITexture:btn3_Select" cut0="60" cut1="-3" orientation="horizontal" />
+	<ThreePatchHClass name="btn_Select" start="btn3_Select:0" middle="btn3_Select:1" finish="btn3_Select:2" />
+	
+	<TextureSlice name="btn3_noheader_Select" texture="MainUITexture:btn3_noheader_Select"  cut0="60" cut1="-6" orientation="vertical"/>
+	<TextureSlice name="btn3_noheader_Select.T" texture="btn3_noheader_Select:0" cut0="3" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_noheader_Select.M" texture="btn3_noheader_Select:1" cut0="3" cut1="-3" orientation="horizontal" />
+	<TextureSlice name="btn3_noheader_Select.B" texture="btn3_noheader_Select:2" cut0="3" cut1="-3" orientation="horizontal" />
+	<NinePatchClass name="btn_noheader_Select"
+		lt="btn3_noheader_Select.T:0" ct="btn3_noheader_Select.T:1" rt="btn3_noheader_Select.T:2" 
+		lm="btn3_noheader_Select.M:0" cm="btn3_noheader_Select.M:1" rm="btn3_noheader_Select.M:2" 
+		lb="btn3_noheader_Select.B:0" cb="btn3_noheader_Select.B:1" rb="btn3_noheader_Select.B:2" />
+	
+	<TextureSlice name="btn3_listen_Push" texture="MainUITexture:btn3_listen_Push"  cut0="6" cut1="-8" orientation="vertical"/>
+	<TextureSlice name="btn3_listen_Push.T" texture="btn3_listen_Push:0" cut0="6" cut1="-6" orientation="horizontal" />
+	<TextureSlice name="btn3_listen_Push.M" texture="btn3_listen_Push:1" cut0="6" cut1="-6" orientation="horizontal" />
+	<TextureSlice name="btn3_listen_Push.B" texture="btn3_listen_Push:2" cut0="6" cut1="-6" orientation="horizontal" />
+	<NinePatchClass name="btn_listen_Push"
+		lt="btn3_listen_Push.T:0" ct="btn3_listen_Push.T:1" rt="btn3_listen_Push.T:2" 
+		lm="btn3_listen_Push.M:0" cm="btn3_listen_Push.M:1" rm="btn3_listen_Push.M:2" 
+		lb="btn3_listen_Push.B:0" cb="btn3_listen_Push.B:1" rb="btn3_listen_Push.B:2" />
+	
+	<TextureSlice name="btn3_listen_long_Push" texture="MainUITexture:btn3_listen_long_Push"  cut0="6" cut1="-8" orientation="vertical"/>
+	<TextureSlice name="btn3_listen_long_Push.T" texture="btn3_listen_long_Push:0" cut0="6" cut1="-6" orientation="horizontal" />
+	<TextureSlice name="btn3_listen_long_Push.M" texture="btn3_listen_long_Push:1" cut0="6" cut1="-6" orientation="horizontal" />
+	<TextureSlice name="btn3_listen_long_Push.B" texture="btn3_listen_long_Push:2" cut0="6" cut1="-6" orientation="horizontal" />
+	<NinePatchClass name="btn_listen_long_Push"
+		lt="btn3_listen_long_Push.T:0" ct="btn3_listen_long_Push.T:1" rt="btn3_listen_long_Push.T:2" 
+		lm="btn3_listen_long_Push.M:0" cm="btn3_listen_long_Push.M:1" rm="btn3_listen_long_Push.M:2" 
+		lb="btn3_listen_long_Push.B:0" cb="btn3_listen_long_Push.B:1" rb="btn3_listen_long_Push.B:2" />
+	
+	<TextureSlice name="btn3_option_Normal" texture="MainUITexture:btn3_option_Normal" cut0="58" cut1="-6" orientation="horizontal" />
+	<ThreePatchHClass name="btn_option_Normal" start="btn3_option_Normal:0" middle="btn3_option_Normal:1" finish="btn3_option_Normal:2" />
+	
+	<TextureSlice name="btn3_option_off_Select" texture="MainUITexture:btn3_option_off_Select" cut0="62" cut1="-6" orientation="horizontal" />
+	<ThreePatchHClass name="btn_option_off_Select" start="btn3_option_off_Select:0" middle="btn3_option_off_Select:1" finish="btn3_option_off_Select:2" />
+	
+	<TextureSlice name="btn3_option_on_Select" texture="MainUITexture:btn3_option_on_Select" cut0="62" cut1="-6" orientation="horizontal" />
+	<ThreePatchHClass name="btn_option_on_Select" start="btn3_option_on_Select:0" middle="btn3_option_on_Select:1" finish="btn3_option_on_Select:2" />
+	
+	<TextureSlice name="frm3_input" texture="MainUITexture:frm3_input" cut0="62" cut1="-6" orientation="horizontal" />
+	<ThreePatchHClass name="frm_input" start="frm3_input:0" middle="frm3_input:1" finish="frm3_input:2" />
+	
+	<TextureSlice name="frm3_input_Push" texture="MainUITexture:frm3_input_Push" cut0="62" cut1="-6" orientation="horizontal" />
+	<ThreePatchHClass name="frm_input_Push" start="frm3_input_Push:0" middle="frm3_input_Push:1" finish="frm3_input_Push:2" />
+	
+	<TextureSlice name="slide3_main" texture="MainUITexture:slide3_main" cut0="3" cut1="-3" orientation="horizontal" />
+	<ThreePatchHClass name="slide_main" start="slide3_main:0" middle="slide3_main:1" finish="slide3_main:2" />
+</UIDesc>

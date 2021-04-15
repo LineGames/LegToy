@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="ui_texture.png" width="256" height="512">
+    <sprite n="btn0_side_Push.png" x="2" y="2" w="110" h="110"/>
+    <sprite n="btn3_listen_long_Push.png" x="235" y="76" w="14" h="64"/>
+    <sprite n="btn3_listen_Push.png" x="218" y="76" w="14" h="64"/>
+    <sprite n="btn3_noheader_Select.png" x="218" y="143" w="10" h="72"/>
+    <sprite n="btn3_Normal.png" x="105" y="208" w="88" h="72"/>
+    <sprite n="btn3_option_Normal.png" x="77" y="433" w="72" h="72"/>
+    <sprite n="btn3_option_off_Select.png" x="2" y="293" w="80" h="72"/>
+    <sprite n="btn3_option_on_Select.png" x="85" y="358" w="80" h="72"/>
+    <sprite n="btn3_Push.png" x="2" y="218" w="88" h="72"/>
+    <sprite n="btn3_Select.png" x="93" y="283" w="88" h="72"/>
+    <sprite n="frm3_input.png" x="184" y="320" w="70" h="62"/>
+    <sprite n="frm3_input_Push.png" x="2" y="368" w="70" h="62"/>
+    <sprite n="icon_bgm_pause.png" x="196" y="218" w="48" h="48"/>
+    <sprite n="icon_bgm_play.png" x="196" y="269" w="48" h="48"/>
+    <sprite n="icon_bgm_rewind.png" x="152" y="433" w="48" h="48"/>
+    <sprite n="icon_close.png" x="2" y="433" w="72" h="74"/>
+    <sprite n="icon_repeat_off.png" x="115" y="2" w="100" h="100"/>
+    <sprite n="icon_repeat_on.png" x="115" y="105" w="100" h="100"/>
+    <sprite n="icon_system_reset.png" x="2" y="115" w="100" h="100"/>
+    <sprite n="slide0_handle_Normal.png" x="218" y="2" w="32" h="34"/>
+    <sprite n="slide0_handle_Push.png" x="218" y="39" w="32" h="34"/>
+    <sprite n="slide3_main.png" x="231" y="143" w="8" h="10"/>
+</TextureAtlas>

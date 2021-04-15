@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<Import name="System" unit="System" />
+	
+	<Define name="refWidth" value="1280" type="float" />
+	<Define name="refHeight" value="720" type="float" />
+	<DefineExpression name="refAspect">
+		<Divide>
+			<Reference type="float" var="refWidth" />
+			<Reference type="float" var="refHeight" />
+		</Divide>
+	</DefineExpression>
+	<DefineExpression name="isOverflowAspect">
+		<IsGreater>
+			<Reference type="float" var="System:screenAspect" />
+			<Reference type="float" var="refAspect" />
+		</IsGreater>
+	</DefineExpression>
+	<DefineExpression name="baseScale">
+		<If>
+			<Reference type="bool" var="isOverflowAspect" />
+			<Divide>
+				<Multiply>
+					<Reference type="float" var="System:screenHeight" />
+					<Reference type="float" var="refAspect" />
+				</Multiply>
+				<Reference type="float" var="refWidth" />
+			</Divide>
+			<Divide>
+				<Reference type="float" var="System:screenWidth" />
+				<Reference type="float" var="refWidth" />
+			</Divide>
+		</If>
+	</DefineExpression>
+</UIDesc>

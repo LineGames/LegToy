@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Showcase Common Description -->
+	
+	<Import name="Common" unit="Common" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="openingAnimMovingAmount" value="200" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="closingAnimMovingAmount" value="350" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineColor name="showcaseTitleFontColor" rgb="#ffffff" a="255" />
+	<DefineScaledValue name="showcaseTitleFontSize" value="28" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="showcaseDescriptionFontColor" rgb="#c0c0c0" a="255" />
+	<DefineScaledValue name="showcaseDescriptionFontSize" value="16" scale="v@Common:baseScale" type="float" />
+	
+	<DefineScaledValue name="headerTitleTextLeft" value="16" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="headerTitleTextTop" value="16" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="headerDescriptionTextLeft" value="19" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="headerDescriptionTextTop" value="48" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+</UIDesc>

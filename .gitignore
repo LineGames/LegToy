@@ -1,0 +1,5 @@
+.Build/
+.vs/
+*.user
+Pods
+xcuserdata

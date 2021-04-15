@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Showcase Closing Common Description -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Texture" unit="Textures" />
+	
+	<!-- Close Button -->
+	<Prefab name="CloseButtonPrefab">
+		<SimpleSingleButton width="v@closeButtonWidth" height="v@closeButtonHeight">
+			<Components>
+				<Layout width="v@closeButtonWidth" height="v@closeButtonHeight" />
+			</Components>
+			<UIObject id="bgPush">
+				<Components>
+					<Layout width="v@closeButtonWidth" height="v@closeButtonHeight" />
+					<Texture texture="Texture:UITex:btn0_side_Push" scale="v@closeButtonBGScale" />
+					<Transform scaleX="-1.0" anchorX="v@closeButtonCentorAnchor" />
+				</Components>
+			</UIObject>
+			<UIObject>
+				<Components>
+					<Layout width="v@closeIconWidth" height="v@closeIconHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" anchorOffsetX="v@closeIconRight" parentOffsetY="v@closeIconTop" />
+					<Texture texture="Texture:UITex:icon_close" width="v@closeIconWidth" height="v@closeIconHeight" />
+				</Components>
+			</UIObject>
+		</SimpleSingleButton>
+	</Prefab>
+	<DefineScaledValue name="closeButtonScale" value="v@Common:baseScale" scale="1.0" type="float" />
+	<DefineScaledValue name="closeButtonBGScale" value="v@Common:baseScale" scale="0.84" type="float" />
+	<DefineExpression name="closeButtonResourceWidth"> <TexGetWidth type="float" target="Texture:UITex:btn0_side_Push" /> </DefineExpression>
+	<DefineScaledValue name="closeButtonWidth" value="v@closeButtonResourceWidth" scale="v@closeButtonBGScale" type="float" />
+	<DefineExpression name="closeButtonResourceHeight"> <TexGetHeight type="float" target="Texture:UITex:btn0_side_Push" /> </DefineExpression>
+	<DefineScaledValue name="closeButtonHeight" value="v@closeButtonResourceHeight" scale="v@closeButtonBGScale" type="float" />
+	
+	<DefineScaledValue name="closeIconWidth" value="36" scale="v@closeButtonScale" quantize="floor" type="float" />
+	<DefineScaledValue name="closeIconHeight" value="37" scale="v@closeButtonScale" quantize="floor" type="float" />
+	<DefineScaledValue name="closeIconRight" value="18" scale="v@closeButtonScale" quantize="floor" type="float" />
+	<DefineScaledValue name="closeIconTop" value="18" scale="v@closeButtonScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="closeButtonCentorAnchor" value="v@closeButtonWidth" scale="0.5" type="float" />
+</UIDesc>

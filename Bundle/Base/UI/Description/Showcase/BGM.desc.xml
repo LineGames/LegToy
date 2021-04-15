@@ -1,0 +1,463 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- BGM Showcase UI Description -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Font" unit="BaseFonts" />
+	<Import name="Texture" unit="Textures" />
+	<Import name="MainMenu" unit="Showcase/MainMenu" />
+	<Import name="Showcases" unit="Showcase/Showcase" />
+	<Import name="Close" unit="Showcase/CaseClose" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="showcaseWidth" value="640" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="showcaseHeight" value="346" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	
+	<DefineColor name="uiBGColor" rgb="#002020" fa="0.92" />
+	
+	<DefineScaledValue name="headerHeight" value="72" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineExpression name="contentsHeight">
+		<Subtract>
+			<Reference type="float" var="showcaseHeight" />
+			<Reference type="float" var="headerHeight" />
+		</Subtract>
+	</DefineExpression>
+	
+	<!-- use a special font for forced monospacing -->
+	<FontClass name="TimeFont" size="16" color="white">
+		<Font font="NotoSans-Bold.ttf" monospaceWidthRatio="0.58" />
+	</FontClass>
+	
+	<DefineScaledValue name="timeFontSize" value="16" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="timeFontColor" rgb="#e0e0e0" a="255" />
+	
+	<DefineScaledValue name="timeTextTop" value="44" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="timeTextRightTotal" value="52" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="timeTextRightSeparator" value="109" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="timeTextRightCurrent" value="128" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<!-- Showcase Main UI Prefab -->
+	<Prefab name="ShowcaseUIPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@showcaseWidth" height="v@showcaseHeight" parentOffsetX="v@MainMenu:contentsAreaCenterX" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+			</Components>
+			
+			<UIObject isPre="true">
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@showcaseHeight" />
+					<ShapeSet>
+						<Rect color="v@uiBGColor" width="v@showcaseWidth" height="v@showcaseHeight" />
+					</ShapeSet>
+				</Components>
+			</UIObject>
+			
+			<!-- Header -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@headerHeight" />
+				</Components>
+				<TextLabel raw="BGM Player Showcase" fontClass="Font:BasicFontBold" color="v@Showcases:showcaseTitleFontColor" size="v@Showcases:showcaseTitleFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerTitleTextLeft" parentOffsetY="v@Showcases:headerTitleTextTop" />
+					</Components>
+				</TextLabel>
+				<TextLabel raw="BGM player showcase; example for platform BGM playing." fontClass="Font:BasicFont" color="v@Showcases:showcaseDescriptionFontColor" size="v@Showcases:showcaseDescriptionFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerDescriptionTextLeft" parentOffsetY="v@Showcases:headerDescriptionTextTop" />
+					</Components>
+				</TextLabel>
+				
+				<UIObject>
+					<Components>
+						<Layout width="v@Close:closeButtonWidth" height="v@Close:closeButtonHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" />
+					</Components>
+					<ImportPrefab id="btnClose" prefab="Close:CloseButtonPrefab" />
+				</UIObject>
+			</UIObject>
+			
+			<!-- Contents -->
+			<UIObject id="playerHolder">
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@contentsHeight" parentOffsetY="v@headerHeight" />
+				</Components>
+				
+				<TextLabel raw="♪ Nineteen" fontClass="Font:BasicFont" color="v@musicNameFontColor" size="v@musicNameFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@musicNameLeft" parentOffsetY="v@musicNameTop" />
+					</Components>
+				</TextLabel>
+				
+				<CachedTextPrint id="txtTimeTotal" fontClass="TimeFont" size="v@timeFontSize" color="v@timeFontColor" placeholder="01:23">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="1.0" anchorOffsetX="v@timeTextRightTotal" anchorRefRatioX="1.0" parentOffsetY="v@timeTextTop" />
+					</Components>
+				</CachedTextPrint>
+				<TextLabel raw="/" fontClass="Font:BasicFont" color="v@timeFontColor" size="v@timeFontSize">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="1.0" anchorOffsetX="v@timeTextRightSeparator" anchorRefRatioX="1.0" parentOffsetY="v@timeTextTop" />
+					</Components>
+				</TextLabel>
+				<CachedTextPrint id="txtTimeCurrent" fontClass="TimeFont" size="v@timeFontSize" color="v@timeFontColor" placeholder="00:59">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="1.0" anchorOffsetX="v@timeTextRightCurrent" anchorRefRatioX="1.0" parentOffsetY="v@timeTextTop" />
+					</Components>
+				</CachedTextPrint>
+				
+				<ImportPrefab id="btnRewind" prefab="RewindButtonPrefab" />
+				<ImportPrefab id="btnPlay" prefab="PlayButtonPrefab" />
+				<ImportPrefab id="btnPause" prefab="PauseButtonPrefab" />
+				
+				<TextLabel raw="Repeat:" fontClass="Font:BasicFont" color="v@repeatCaptionFontColor" size="v@repeatCaptionFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@repeatCaptionLeft" parentOffsetY="v@repeatCaptionTop" />
+					</Components>
+				</TextLabel>
+				<ImportPrefab id="toggleRepeat" prefab="RepeatOnOffButtonPrefab" />
+			</UIObject>
+			
+		</UIObject>
+	</Prefab>
+	<DefineScaledValue name="musicNameFontSize" value="19.6" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="musicNameFontColor" rgb="#c0c0c0" a="255" />
+	<DefineScaledValue name="musicNameLeft" value="16" scale="v@Common:baseScale" type="float" />
+	<DefineScaledValue name="musicNameTop" value="42" scale="v@Common:baseScale" type="float" />
+	
+	<DefineScaledValue name="repeatCaptionFontSize" value="17.2" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="repeatCaptionFontColor" rgb="#a0a0a0" a="255" />
+	<DefineScaledValue name="repeatCaptionLeft" value="362" scale="v@Common:baseScale" type="float" />
+	<DefineScaledValue name="repeatCaptionTop" value="139" scale="v@Common:baseScale" type="float" />
+	
+	<!-- Scrollable Progress Bar -->
+	<Prefab name="ScrollBarPrefab">
+		<SimpleSlider width="v@scrollBarWidth" handlePrefab="ScrollHandlePrefab" handleWidthRatio="2.8" handleHeightRatio="3.0">
+			<Components>
+				<Layout width="v@scrollBarWidth" height="v@scrollBarHeight" parentRefRatioX="0.5" parentOffsetY="v@scrollBarTop" anchorRefRatioX="0.5" />
+				<Patch patch="Texture:UIPatch:slide_main" isFitSize="True" />
+			</Components>
+		</SimpleSlider>
+	</Prefab>
+	<DefineScaledValue name="scrollBarWidth" value="540" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineExpression name="scrollBarHeight">
+		<TexGetHeight type="float" target="Texture:UITex:slide3_main" /> <!-- Pixel-by-Pixel -->
+	</DefineExpression>
+	<DefineScaledValue name="scrollBarTop" value="84" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="scrollBarHeightHalf" value="v@scrollBarHeight" scale="0.5" quantize="round" type="float" />
+	
+	<!-- Scroll Handle -->
+	<Prefab name="ScrollHandlePrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@scrollHandleWidth" height="v@scrollHandleHeight" parentOffsetY="v@scrollBarHeightHalf" />
+			</Components>
+			<UIObject id="bgNormal">
+				<Components>
+					<Layout sizeRef="object" parentOffsetY="v@scrollHandleOffset" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					<Texture width="v@scrollHandleWidth" height="v@scrollHandleHeight" texture="Texture:UITex:slide0_handle_Normal" />
+				</Components>
+			</UIObject>
+			<UIObject id="bgPush">
+				<Components>
+					<Layout sizeRef="object" parentOffsetY="v@scrollHandlePushedOffset" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					<Texture width="v@scrollHandlePushedWidth" height="v@scrollHandlePushedHeight" texture="Texture:UITex:slide0_handle_Push" />
+				</Components>
+			</UIObject>
+		</UIObject>
+	</Prefab>
+	<DefineScaledValue name="scrollHandleHeight" value="36" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2.0" type="float" />
+	<DefineExpression name="scrollHandleSizeRatio">
+		<Divide>
+			<Reference type="float" var="scrollHandleHeight" />
+			<TexGetHeight type="float" target="Texture:UITex:slide0_handle_Normal" />
+		</Divide>
+	</DefineExpression>
+	<DefineScaledValue name="scrollHandleOffset" value="1" scale="v@scrollHandleSizeRatio" quantize="floor" type="float" />
+	<DefineExpression name="scrollHandleWidth">
+		<Floor> <Multiply>
+			<TexGetWidth type="float" target="Texture:UITex:slide0_handle_Normal" />
+			<Reference type="float" var="scrollHandleSizeRatio" />
+		</Multiply> </Floor>
+	</DefineExpression>
+	<DefineScaledValue name="scrollHandlePushedOffset" value="1" scale="v@scrollHandleSizeRatio" quantize="floor" type="float" />
+	<DefineExpression name="scrollHandlePushedWidth">
+		<Floor> <Multiply>
+			<TexGetWidth type="float" target="Texture:UITex:slide0_handle_Push" />
+			<Reference type="float" var="scrollHandleSizeRatio" />
+		</Multiply> </Floor>
+	</DefineExpression>
+	<DefineExpression name="scrollHandlePushedHeight">
+		<Floor> <Multiply>
+			<TexGetHeight type="float" target="Texture:UITex:slide0_handle_Push" />
+			<Reference type="float" var="scrollHandleSizeRatio" />
+		</Multiply> </Floor>
+	</DefineExpression>
+	
+	<!-- Buttons -->
+	<DefineScaledValue name="buttonsTop" value="160" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="buttonWidth" value="70" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="buttonHeight" value="64" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="buttonTouchWidth" value="v@buttonWidth" scale="1.2" type="float" />
+	<DefineScaledValue name="buttonTouchHeight" value="v@buttonHeight" scale="1.2" type="float" />
+	
+	<DefineScaledValue name="buttonFontSize" value="26" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="buttonFontNormalColor" rgb="#ffffff" a="255" />
+	<Alias name="buttonFontActiveColor" for="Font:darkFontColor" />
+	
+	<Prefab name="PlayButtonPrefab">
+		<SimpleSingleButton width="v@buttonTouchWidth" height="v@buttonTouchHeight">
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" parentOffsetX="v@playButtonLeft" parentOffsetY="v@buttonsTop" />
+			</Components>
+			
+			<ImportPrefab id="bgNormal" prefab="ControlButtonNormalBGPrefab" />
+			<ImportPrefab id="bgPush" prefab="ControlButtonPushBGPrefab" />
+			<ImportPrefab id="bgActive" prefab="ControlButtonActiveBGPrefab" />
+			
+			<UIObject id="contentsInactive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<UIObject>
+					<Components>
+						<Layout width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+						<Texture texture="Texture:UITex:icon_bgm_play" width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" />
+					</Components>
+				</UIObject>
+			</UIObject>
+			<UIObject id="contentsActive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<UIObject>
+					<Components>
+						<Layout width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+						<Texture texture="Texture:UITex:icon_bgm_play" width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" color="v@controlButtonIconActiveColor" />
+					</Components>
+				</UIObject>
+			</UIObject>
+		</SimpleSingleButton>
+	</Prefab>
+	<DefineScaledValue name="playButtonLeft" value="140" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<Prefab name="PauseButtonPrefab">
+		<SimpleSingleButton width="v@buttonTouchWidth" height="v@buttonTouchHeight">
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" parentOffsetX="v@pauseButtonLeft" parentOffsetY="v@buttonsTop" />
+			</Components>
+			
+			<ImportPrefab id="bgNormal" prefab="ControlButtonNormalBGPrefab" />
+			<ImportPrefab id="bgPush" prefab="ControlButtonPushBGPrefab" />
+			<ImportPrefab id="bgActive" prefab="ControlButtonActiveBGPrefab" />
+			
+			<UIObject id="contentsInactive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<UIObject>
+					<Components>
+						<Layout width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+						<Texture texture="Texture:UITex:icon_bgm_pause" width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" />
+					</Components>
+				</UIObject>
+			</UIObject>
+			<UIObject id="contentsActive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<UIObject>
+					<Components>
+						<Layout width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+						<Texture texture="Texture:UITex:icon_bgm_pause" width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" color="v@controlButtonIconActiveColor" />
+					</Components>
+				</UIObject>
+			</UIObject>
+		</SimpleSingleButton>
+	</Prefab>
+	<DefineScaledValue name="pauseButtonLeft" value="228" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<Prefab name="RewindButtonPrefab">
+		<SimpleSingleButton width="v@buttonTouchWidth" height="v@buttonTouchHeight">
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" parentOffsetX="v@rewindButtonLeft" parentOffsetY="v@buttonsTop" />
+			</Components>
+			
+			<ImportPrefab id="bgNormal" prefab="ControlButtonNormalBGPrefab" />
+			<ImportPrefab id="bgPush" prefab="ControlButtonPushBGPrefab" />
+			
+			<UIObject id="contentsInactive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<UIObject>
+					<Components>
+						<Layout width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+						<Texture texture="Texture:UITex:icon_bgm_rewind" width="v@controlButtonIconWidth" height="v@controlButtonIconHeight" />
+					</Components>
+				</UIObject>
+			</UIObject>
+		</SimpleSingleButton>
+	</Prefab>
+	<DefineScaledValue name="rewindButtonLeft" value="52" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="controlButtonIconWidth" value="38" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="controlButtonIconHeight" value="38" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineColor name="controlButtonIconActiveColor" rgb="#ff00a8" a="255" />
+	
+	<Prefab name="ControlButtonNormalBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_Normal" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="ControlButtonPushBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_Push" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="ControlButtonActiveBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_noheader_Select" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+	<!-- Toggle Option -->
+	<DefineScaledValue name="repeatButtonLeft" value="368" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<Prefab name="RepeatOnOffButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@onOffButtonWidth" height="v@buttonHeight" parentOffsetX="v@repeatButtonLeft" parentOffsetY="v@buttonsTop" />
+			</Components>
+			
+			<ImportPrefab id="btnOn" prefab="RepeatOnButtonPrefab" />
+			<ImportPrefab id="btnOff" prefab="RepeatOffButtonPrefab" />
+		</UIObject>
+	</Prefab>
+	<Prefab name="RepeatOnButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+				<Patch patch="Texture:UIPatch:btn_option_Normal" width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+			</Components>
+			<UIObject id="bgSelect">
+				<Components>
+					<Layout width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_option_on_Select" width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject>
+				<Components>
+					<Layout width="v@onOffButtonIconWidth" height="v@onOffButtonIconHeight" parentOffsetX="v@onOffButtonIconLeft" parentOffsetY="v@onOffButtonIconTop" />
+					<Texture texture="Texture:UITex:icon_repeat_on" width="v@onOffButtonIconWidth" height="v@onOffButtonIconHeight" />
+				</Components>
+			</UIObject>
+			
+			<UIObject id="contentsNormal">
+				<Components>
+					<Layout width="v@onOffButtonContentsWidth" height="v@onOffButtonButtonHeight" parentOffsetX="v@onOffButtonIconWidth" />
+				</Components>
+				<TextLabel raw="On" fontClass="Font:BasicFont" size="v@onOffButtonContentsFontSize">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="0.56" parentRefRatioY="0.53" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+			<UIObject id="contentsSelect">
+				<Components>
+					<Layout width="v@onOffButtonContentsWidth" height="v@onOffButtonButtonHeight" parentOffsetX="v@onOffButtonIconWidth" />
+				</Components>
+				<TextLabel raw="On" fontClass="Font:BasicFont" size="v@onOffButtonContentsFontSize" color="v@onOffButtonContentsFontActiveColor">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="0.56" parentRefRatioY="0.53" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+		</UIObject>
+	</Prefab>
+	<Prefab name="RepeatOffButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" parentOffsetX="v@onOffButtonOffLeft" />
+				<Patch patch="Texture:UIPatch:btn_option_Normal" width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+			</Components>
+			<UIObject id="bgSelect">
+				<Components>
+					<Layout width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_option_off_Select" width="v@onOffButtonButtonWidth" height="v@onOffButtonButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject>
+				<Components>
+					<Layout width="v@onOffButtonIconWidth" height="v@onOffButtonIconHeight" parentOffsetX="v@onOffButtonIconLeft" parentOffsetY="v@onOffButtonIconTop" />
+					<Texture texture="Texture:UITex:icon_repeat_off" width="v@onOffButtonIconWidth" height="v@onOffButtonIconHeight" />
+				</Components>
+			</UIObject>
+			
+			<UIObject id="contentsNormal">
+				<Components>
+					<Layout width="v@onOffButtonContentsWidth" height="v@onOffButtonButtonHeight" parentOffsetX="v@onOffButtonIconWidth" />
+				</Components>
+				<TextLabel raw="Off" fontClass="Font:BasicFont" size="v@onOffButtonContentsFontSize">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="0.56" parentRefRatioY="0.53" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+			<UIObject id="contentsSelect">
+				<Components>
+					<Layout width="v@onOffButtonContentsWidth" height="v@onOffButtonButtonHeight" parentOffsetX="v@onOffButtonIconWidth" />
+				</Components>
+				<TextLabel raw="Off" fontClass="Font:BasicFont" size="v@onOffButtonContentsFontSize" color="v@onOffButtonContentsFontActiveColor">
+					<Components>
+						<Layout sizeRef="object" parentRefRatioX="0.56" parentRefRatioY="0.53" anchorRefRatioX="0.5" anchorRefRatioY="0.5" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+		</UIObject>
+	</Prefab>
+	<DefineExpression name="onOffButtonWidth">
+		<Ceil> <Add>
+			<Reference type="float" var="onOffButtonButtonWidth" />
+			<Reference type="float" var="onOffButtonInterMargin" />
+			<Reference type="float" var="onOffButtonButtonWidth" />
+		</Add> </Ceil>
+	</DefineExpression>
+	<Alias name="onOffButtonHeight" for="buttonHeight" />
+	<DefineScaledValue name="onOffButtonButtonWidth" value="108" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<Alias name="onOffButtonButtonHeight" for="buttonHeight" />
+	<DefineScaledValue name="onOffButtonInterMargin" value="6" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineExpression name="onOffButtonOffLeft">
+		<Floor> <Add>
+			<Reference type="float" var="onOffButtonButtonWidth" />
+			<Reference type="float" var="onOffButtonInterMargin" />
+		</Add> </Floor>
+	</DefineExpression>
+	
+	<DefineScaledValue name="onOffButtonIconWidth" value="53" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="onOffButtonIconHeight" value="53" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="onOffButtonIconLeft" value="1.6" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="onOffButtonIconTop" value="5" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineExpression name="onOffButtonContentsWidth">
+		<Floor> <Subtract>
+			<Reference type="float" var="onOffButtonButtonWidth" />
+			<Reference type="float" var="onOffButtonIconWidth" />
+		</Subtract> </Floor>
+	</DefineExpression>
+	<DefineScaledValue name="onOffButtonContentsFontSize" value="16" scale="v@Common:baseScale" type="float" />
+	<Alias name="onOffButtonContentsFontActiveColor" for="Font:darkFontColor" />
+	<Define name="onOffButtonTouchHeightRatio" value="1.2" type="float" />
+</UIDesc>

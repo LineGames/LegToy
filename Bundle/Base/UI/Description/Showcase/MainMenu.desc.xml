@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Main Menu Description of Showcase Scene -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Font" unit="BaseFonts" />
+	<Import name="Texture" unit="Textures" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="buttonWidth" value="280" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="buttonHeight" value="70" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="buttonSpace" value="2" scale="v@Common:baseScale" quantize="ceil" quantizeUnit="2" type="float" />
+	
+	<DefineScaledValue name="buttonTouchWidth" value="v@buttonWidth" scale="1.0" type="float" />
+	<DefineScaledValue name="buttonTouchHeight" value="v@buttonHeight" scale="1.0" type="float" />
+	
+	<DefineExpression name="buttonUnitHeight">
+		<Add>
+			<Reference type="float" var="buttonHeight" />
+			<Reference type="float" var="buttonSpace" />
+		</Add>
+	</DefineExpression>
+	
+	<DefineScaledValue name="buttonFontSize" value="26" scale="v@Common:baseScale" type="float" />
+	<DefineScaledValue name="buttonTextLeft" value="70" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="buttonTextTop" value="23" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineColor name="buttonFontNormalColor" rgb="#ffffff" a="255" />
+	<Alias name="buttonFontActiveColor" for="Font:darkFontColor" />
+	
+	<DefineColor name="menuBGColor" rgb="#000020" fa="0.4" />
+	
+	<DefineScaledValue name="menuBGPadding" value="8" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="menuBGHeaderHeight" value="52" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	
+	<DefineExpression name="menuBGWidth">
+		<Add>
+			<Reference type="float" var="menuBGPadding" />
+			<Reference type="float" var="buttonWidth" />
+			<Reference type="float" var="menuBGPadding" />
+		</Add>
+	</DefineExpression>
+	
+	<DefineScaledValue name="mainMenuLeftMargin" value="12" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="mainMenuTopMargin" value="12" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineExpression name="mainMenuLeft">
+		<Add>
+			<Reference type="float" var="System:safeInsetLeft" />
+			<Reference type="float" var="mainMenuLeftMargin" />
+		</Add>
+	</DefineExpression>
+	<DefineExpression name="mainMenuTop">
+		<Add>
+			<Reference type="float" var="System:safeInsetTop" />
+			<Reference type="float" var="mainMenuTopMargin" />
+		</Add>
+	</DefineExpression>
+	
+	<DefineExpression name="buttonPanelTop">
+		<Add>
+			<Reference type="float" var="menuBGPadding" />
+			<Reference type="float" var="menuBGHeaderHeight" />
+		</Add>
+	</DefineExpression>
+	
+	<DefineExpression name="contentsAreaCenterX">
+		<Subtract>
+			<Reference type="float" var="System:screenWidth" />
+			<Round> <Divide>
+				<Subtract>
+					<Reference type="float" var="System:screenWidth" />
+					<Add>
+						<Reference type="float" var="mainMenuLeft" />
+						<Reference type="float" var="menuBGWidth" />
+					</Add>
+				</Subtract>
+				<Constant type="float" value="2" />
+			</Divide> </Round>
+		</Subtract>
+	</DefineExpression>
+	
+	<DefineScaledValue name="headerTitleTextLeft" value="0" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="headerTitleTextTop" value="8" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineColor name="headerTitleFontColor" rgb="#ffffff" a="255" />
+	<DefineScaledValue name="headerTitleFontSize" value="28" scale="v@Common:baseScale" type="float" />
+	
+	<!-- Main Menu UI Prefab -->
+	<Prefab name="MainMenuPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@menuBGWidth" height="42" parentOffsetX="v@mainMenuLeft" parentOffsetY="v@mainMenuTop" />
+			</Components>
+			
+			<UIObject id="menuBG" isPre="true">
+				<Components>
+					<Layout width="v@menuBGWidth" height="42" />
+					<ShapeSet>
+						<Rect color="v@menuBGColor" width="v@menuBGWidth" height="42" />
+					</ShapeSet>
+				</Components>
+			</UIObject>
+			
+			<!-- Header -->
+			<UIObject>
+				<Components>
+					<Layout width="v@buttonWidth" height="v@menuBGHeaderHeight" parentOffsetX="v@menuBGPadding" parentOffsetY="v@menuBGPadding" />
+				</Components>
+				<TextLabel raw="Engine Showcase" fontClass="Font:BasicFontBold" color="v@headerTitleFontColor" size="v@headerTitleFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@headerTitleTextLeft" parentOffsetY="v@headerTitleTextTop" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+			
+			<ImportPrefab id="menuContents" prefab="ButtonPanelPrefab" />
+		</UIObject>
+	</Prefab>
+	
+	<!-- Button Prefab -->
+	<Prefab name="ButtonPanelPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="42" parentOffsetX="v@menuBGPadding" parentOffsetY="v@buttonPanelTop" />
+			</Components>
+			
+			<ImportPrefab id="btnSoundEffect" prefab="SoundEffectButtonPrefab" />
+			<ImportPrefab id="btnBGMPlayer" prefab="BGMPlayerButtonPrefab" />
+			<ImportPrefab id="btnTypesetting" prefab="TypesettingButtonPrefab" />
+			<ImportPrefab id="btnHashTester" prefab="HashTesterButtonPrefab" />
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="ButtonPrefab">
+		<SimpleSingleButton width="v@buttonTouchWidth" height="v@buttonTouchHeight">
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+			
+			<ImportPrefab id="bgNormal" prefab="MainButtonNormalBGPrefab" />
+			<ImportPrefab id="bgPush" prefab="MainButtonPushBGPrefab" />
+			<ImportPrefab id="bgActive" prefab="MainButtonActiveBGPrefab" />
+			
+			<UIObject id="contentsInactive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<TextLabel generateKey="buttonCaption" fontClass="Font:BasicFont" color="v@buttonFontNormalColor" size="v@buttonFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@buttonTextLeft" parentOffsetY="v@buttonTextTop" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+			<UIObject id="contentsActive">
+				<Components>
+					<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				</Components>
+				<TextLabel generateKey="buttonCaption" fontClass="Font:BasicFont" color="v@buttonFontActiveColor" size="v@buttonFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@buttonTextLeft" parentOffsetY="v@buttonTextTop" />
+					</Components>
+				</TextLabel>
+			</UIObject>
+		</SimpleSingleButton>
+	</Prefab>
+	
+	<!-- Button common elements -->
+	<Prefab name="MainButtonNormalBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_Normal" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="MainButtonPushBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_Push" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="MainButtonActiveBGPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@buttonWidth" height="v@buttonHeight" />
+				<Patch patch="Texture:UIPatch:btn_Select" width="v@buttonWidth" height="v@buttonHeight" />
+			</Components>
+		</UIObject>
+	</Prefab>
+	
+</UIDesc>

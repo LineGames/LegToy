@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<Import name="Common" unit="Common" />
+	
+	<Define name="defaultRefFontSize" value="26" type="float" />
+	<DefineExpression name="defaultFontSize">
+		<Multiply>
+			<Reference type="float" var="defaultRefFontSize" />
+			<Reference type="float" var="Common:baseScale" />
+		</Multiply>
+	</DefineExpression>
+	
+	<FontClass name="BasicFont" size="v@defaultFontSize" color="white">
+		<Font font="Exo2-Medium.ttf" />
+		<Font font="NotoSansKR-Medium.otf" isPreferredForTofu="true" />
+		<Font font="NotoSans-Regular.ttf" />
+	</FontClass>
+	<FontClass name="BasicFontBold" size="v@defaultFontSize" color="white">
+		<Font font="Exo2-SemiBold.ttf" />
+		<Font font="NotoSansKR-Medium.otf" isPreferredForTofu="true" />
+		<Font font="NotoSans-Bold.ttf" />
+	</FontClass>
+	
+	<DefineColor name="defaultStrokeBlack" rgb="#000000" fa="0.4" />
+	<FontClass name="BasicFontStroked" size="v@defaultFontSize" color="white" strokeWidth="2.0" strokeColor="v@defaultStrokeBlack">
+		<Font font="Exo2-Medium.ttf" />
+		<Font font="NotoSansKR-Medium.otf" isPreferredForTofu="true" />
+		<Font font="NotoSans-Regular.ttf" />
+	</FontClass>
+	
+	<DefineScaledValue name="scaleStrokeWidth" value="2.0" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<FontClass name="BasicFontScaleStroked" size="v@defaultFontSize" color="white" strokeWidth="v@scaleStrokeWidth" strokeColor="v@defaultStrokeBlack">
+		<Font font="Exo2-Medium.ttf" />
+		<Font font="NotoSansKR-Medium.otf" isPreferredForTofu="true" />
+		<Font font="NotoSans-Regular.ttf" />
+	</FontClass>
+	
+	<DefineColor name="darkFontColor" rgb="#444444" fa="1.0" />
+	<DefineColor name="lightDarkFontColor" rgb="#8c8c8c" fa="1.0" />
+</UIDesc>

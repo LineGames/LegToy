@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Web View Showcase UI Description -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Font" unit="BaseFonts" />
+	<Import name="Texture" unit="Textures" />
+	<Import name="MainMenu" unit="Showcase/MainMenu" />
+	<Import name="Showcases" unit="Showcase/Showcase" />
+	<Import name="Close" unit="Showcase/CaseClose" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="showcaseWidth" value="608" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="showcaseHeight" value="280" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	
+	<DefineColor name="uiBGColor" rgb="#002040" fa="0.93" />
+	
+	<DefineScaledValue name="headerHeight" value="72" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineExpression name="contentsHeight">
+		<Subtract>
+			<Reference type="float" var="showcaseHeight" />
+			<Reference type="float" var="headerHeight" />
+		</Subtract>
+	</DefineExpression>
+	
+	<DefineColor name="contentsLabelFontColor" rgb="#e0e0e0" a="255" />
+	<DefineScaledValue name="contentsLabelFontSize" value="24" scale="v@Common:baseScale" type="float" />
+	
+	<DefineScaledValue name="contentsLabelRightAlign" value="174" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="valueLeft" value="196" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="contentsLine1Top" value="35" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="contentsLine1InputTop" value="24" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="textboxTextFontSize" value="18" scale="v@Common:baseScale" type="float" />
+	
+	<DefineScaledValue name="textboxWidth" value="360" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="textboxHeight" value="42" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="textboxTextClippingWidth" value="348" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="contentsLine2Top" value="100" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="goButtonWidth" value="180" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="goButtonHeight" value="72" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<!-- Showcase Main UI Prefab -->
+	<Prefab name="ShowcaseUIPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@showcaseWidth" height="v@showcaseHeight" parentOffsetX="v@MainMenu:contentsAreaCenterX" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+			</Components>
+			
+			<UIObject isPre="true">
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@showcaseHeight" />
+					<ShapeSet>
+						<Rect color="v@uiBGColor" width="v@showcaseWidth" height="v@showcaseHeight" />
+					</ShapeSet>
+				</Components>
+			</UIObject>
+			
+			<!-- Header -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@headerHeight" />
+				</Components>
+				<TextLabel raw="Web View Showcase" fontClass="Font:BasicFontBold" color="v@Showcases:showcaseTitleFontColor" size="v@Showcases:showcaseTitleFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerTitleTextLeft" parentOffsetY="v@Showcases:headerTitleTextTop" />
+					</Components>
+				</TextLabel>
+				<TextLabel raw="Web view showcase; example for web view service." fontClass="Font:BasicFont" color="v@Showcases:showcaseDescriptionFontColor" size="v@Showcases:showcaseDescriptionFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerDescriptionTextLeft" parentOffsetY="v@Showcases:headerDescriptionTextTop" />
+					</Components>
+				</TextLabel>
+				
+				<UIObject>
+					<Components>
+						<Layout width="v@Close:closeButtonWidth" height="v@Close:closeButtonHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" />
+					</Components>
+					<ImportPrefab id="btnClose" prefab="Close:CloseButtonPrefab" />
+				</UIObject>
+			</UIObject>
+			
+			<!-- Contents -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@contentsHeight" parentOffsetY="v@headerHeight" />
+				</Components>
+				
+				<TextLabel raw="Address:" fontClass="Font:BasicFont" color="v@contentsLabelFontColor" size="v@contentsLabelFontSize">
+					<Components>
+						<Layout sizeRef="object" anchorRefRatioX="1.0" parentOffsetX="v@contentsLabelRightAlign" parentOffsetY="v@contentsLine1Top" />
+					</Components>
+				</TextLabel>
+				<ImportPrefab id="txtInput" prefab="AddressTextInputBoxPrefab" />
+				
+				<ImportPrefab id="btnGo" prefab="GoButtonPrefab" />
+			</UIObject>
+			
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="AddressTextInputBoxPrefab">
+		<TextInputBox width="v@textboxWidth" height="v@textboxHeight" fontClass="Font:BasicFont" size="v@textboxTextFontSize" textParentOffsetX="v@textboxTextLeft" textParentOffsetY="v@textboxTextTop" clipWidth="v@textboxTextClippingWidth"
+			dlgTitle_raw="Input Address" dlgMsg_raw="Address(url) to visit.">
+			<Components>
+				<Layout width="v@textboxWidth" height="v@textboxHeight" parentOffsetX="v@valueLeft" parentOffsetY="v@contentsLine1InputTop" />
+			</Components>
+			<UIObject isPre="true" id="bgNormal">
+				<Components>
+					<Layout width="v@textboxWidth" height="v@textboxHeight" />
+					<Patch patch="Texture:UIPatch:frm_input" width="v@textboxWidth" height="v@textboxHeight" />
+				</Components>
+			</UIObject>
+			<UIObject isPre="true" id="bgPush">
+				<Components>
+					<Layout width="v@textboxWidth" height="v@textboxHeight" />
+					<Patch patch="Texture:UIPatch:frm_input_Push" width="v@textboxWidth" height="v@textboxHeight" />
+				</Components>
+			</UIObject>
+		</TextInputBox>
+	</Prefab>
+	<DefineScaledValue name="textboxTextLeft" value="16" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="textboxTextTop" value="12" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<Prefab name="GoButtonPrefab">
+		<SimpleSingleButton width="v@goButtonWidth" height="v@goButtonHeight">
+			<Components>
+				<Layout width="v@goButtonWidth" height="v@goButtonHeight" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentOffsetY="v@contentsLine2Top" />
+			</Components>
+			
+			<UIObject id="bgNormal">
+				<Components>
+					<Layout width="v@goButtonWidth" height="v@goButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@goButtonWidth" height="v@goButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="bgPush">
+				<Components>
+					<Layout width="v@goButtonWidth" height="v@goButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Push" width="v@goButtonWidth" height="v@goButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="GO!" color="v@goButtonFontColor" size="v@goButtonFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.54" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</SimpleSingleButton>
+	</Prefab>
+	<DefineScaledValue name="goButtonFontSize" value="36" scale="v@Common:baseScale" type="float" />
+	<DefineColor name="goButtonFontColor" rgb="#ffffff" a="255" />
+</UIDesc>

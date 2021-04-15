@@ -1,0 +1,10 @@
+[Exo 2]
+https://github.com/NDISCOVER/Exo-2.0
+
+under SIL OPEN FONT LICENSE Version 1.1
+
+
+[Noto Sans]
+https://github.com/googlefonts/noto-fonts
+
+under Apache License, Version 2.0

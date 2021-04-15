@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="CreateGame.cpp" />
+    <ClCompile Include="Scene\Game_Scenes.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameModules.cpp" />
+    <ClCompile Include="Common\BackgroundRenderer.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\InitialLoadingScene\InitialLoadingScene.cpp">
+      <Filter>Scene\InitialLoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseScene.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Common\SharedResources.cpp">
+      <Filter>Common\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\InitialLoadingScene\LoadingMarker.cpp">
+      <Filter>Scene\InitialLoadingScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\CubeSpace.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseLogicCenter.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseMainMenuController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseTypesetController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseHashController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseBGMController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseSoundEffectController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseControllerBase.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseUIExampleController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseWebViewController.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\ShowcaseScene\ShowcaseLoadingTasks.cpp">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Scene\SceneIds.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\BackgroundRenderer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\InitialLoadingScene\InitialLoadingScene.h">
+      <Filter>Scene\InitialLoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseScene.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IResource_CommonRendering.h">
+      <Filter>Common\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\IResource_UI.h">
+      <Filter>Common\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Common\SharedResources.h">
+      <Filter>Common\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\InitialLoadingScene\LoadingMarker.h">
+      <Filter>Scene\InitialLoadingScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\CubeSpace.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseLogicCenter.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseMainMenuController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseTypesetController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseHashController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseBGMController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseSoundEffectController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseControllerBase.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseUIExampleController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseWebViewController.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\ShowcaseScene\ShowcaseLoadingTasks.h">
+      <Filter>Scene\ShowcaseScene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{f40236ee-c796-4c02-b4b7-0b6f821d33cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\InitialLoadingScene">
+      <UniqueIdentifier>{7bb62fce-c5fc-4971-9c89-89433dfcbb9a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\ShowcaseScene">
+      <UniqueIdentifier>{204204e0-60db-4c03-bdd2-32a521c1d74e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{ae37c60d-8c5a-4767-bd09-ab5501891345}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Resources">
+      <UniqueIdentifier>{c3ae1382-9c90-4117-9573-6b6eba088f55}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

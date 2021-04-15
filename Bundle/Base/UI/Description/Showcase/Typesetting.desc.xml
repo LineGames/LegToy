@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Typesetting Showcase UI Description -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Font" unit="BaseFonts" />
+	<Import name="MainMenu" unit="Showcase/MainMenu" />
+	<Import name="Showcases" unit="Showcase/Showcase" />
+	<Import name="Close" unit="Showcase/CaseClose" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="showcaseWidth" value="720" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineExpression name="showcaseHeight">
+		<Round> <Multiply>
+			<Reference type="float" var="System:safeAreaHeight" />
+			<Constant type="float" value="0.8" />
+		</Multiply> </Round>
+	</DefineExpression>
+	
+	<Alias name="articleFontClass" for="Font:BasicFont" />
+	<DefineColor name="articleFontColor" rgb="#e8e8e8" a="255" />
+	<DefineScaledValue name="articleFontSize" value="18" scale="v@Common:baseScale" type="float" />
+	<Alias name="articleTitleFontClass" for="Font:BasicFontBold" />
+	<DefineColor name="articleTitleFontColor" rgb="#ffffff" a="255" />
+	<DefineScaledValue name="articleTitleFontSize" value="24" scale="v@Common:baseScale" type="float" />
+	
+	<DefineColor name="articleTitleShadowColor" rgb="#000000" a="192" />
+	<DefineScaledValue name="articleTitleShadowOffsetX" value="1" scale="v@Common:baseScale" type="float" />
+	<DefineScaledValue name="articleTitleShadowOffsetY" value="2" scale="v@Common:baseScale" type="float" />
+	
+	<DefineScaledValue name="articleTitleHeadMargin" value="20" scale="v@Common:baseScale" type="float" />
+	<DefineScaledValue name="articleTitleMargin" value="36" scale="v@Common:baseScale" type="float" />
+	
+	<Define name="articleLineSpacing" value="1.6" type="float" />
+	
+	<DefineColor name="uiBGColor" rgb="#400020" fa="0.5" />
+	
+	<DefineScaledValue name="headerHeight" value="72" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineExpression name="contentsHeight">
+		<Subtract>
+			<Reference type="float" var="showcaseHeight" />
+			<Reference type="float" var="headerHeight" />
+		</Subtract>
+	</DefineExpression>
+	
+	<DefineScaledValue name="articleAreaMargin" value="16" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineExpression name="articleAreaWidth">
+		<Subtract>
+			<Reference type="float" var="showcaseWidth" />
+			<Add>
+				<Reference type="float" var="articleAreaMargin" />
+				<Reference type="float" var="articleAreaMargin" />
+			</Add>
+		</Subtract>
+	</DefineExpression>
+	<DefineExpression name="articleHeight">
+		<Subtract>
+			<Reference type="float" var="contentsHeight" />
+			<Add>
+				<Reference type="float" var="articleAreaMargin" />
+				<Reference type="float" var="articleAreaMargin" />
+			</Add>
+		</Subtract>
+	</DefineExpression>
+	
+	<DefineScaledValue name="articlePadding" value="8" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineExpression name="articleWidth">
+		<Subtract>
+			<Reference type="float" var="articleAreaWidth" />
+			<Add>
+				<Reference type="float" var="articlePadding" />
+				<Reference type="float" var="articlePadding" />
+			</Add>
+		</Subtract>
+	</DefineExpression>
+	
+	<DefineScaledValue name="articlePanelScrollThreshold" value="10" scale="v@Common:baseScale" type="float" />
+	
+	<DefineColor name="articleBGColor" rgb="#303830" fa="0.93" />
+	
+	<DefineScaledValue name="scrollMarkerWidth" value="2" scale="v@Common:baseScale" quantize="ceil" type="float" />
+	<DefineScaledValue name="scrollMarkerMinLength" value="16" scale="v@Common:baseScale" quantize="ceil" type="float" />
+	<DefineColor name="scrollMarkerColor" rgb="#a0a0ff" fa="0.9" />
+	
+	<!-- Showcase Main UI Prefab -->
+	<Prefab name="ShowcaseUIPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@showcaseWidth" height="v@showcaseHeight" parentOffsetX="v@MainMenu:contentsAreaCenterX" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+			</Components>
+			
+			<UIObject isPre="true">
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@showcaseHeight" />
+					<ShapeSet>
+						<Rect color="v@uiBGColor" width="v@showcaseWidth" height="v@showcaseHeight" />
+					</ShapeSet>
+				</Components>
+			</UIObject>
+			
+			<!-- Header -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@headerHeight" />
+				</Components>
+				<TextLabel raw="Typesetting Showcase" fontClass="Font:BasicFontBold" color="v@Showcases:showcaseTitleFontColor" size="v@Showcases:showcaseTitleFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerTitleTextLeft" parentOffsetY="v@Showcases:headerTitleTextTop" />
+					</Components>
+				</TextLabel>
+				<TextLabel raw="Typeset text showcase; example for typesetting and bundle data loading." fontClass="Font:BasicFont" color="v@Showcases:showcaseDescriptionFontColor" size="v@Showcases:showcaseDescriptionFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerDescriptionTextLeft" parentOffsetY="v@Showcases:headerDescriptionTextTop" />
+					</Components>
+				</TextLabel>
+				
+				<UIObject>
+					<Components>
+						<Layout width="v@Close:closeButtonWidth" height="v@Close:closeButtonHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" />
+					</Components>
+					<ImportPrefab id="btnClose" prefab="Close:CloseButtonPrefab" />
+				</UIObject>
+			</UIObject>
+			
+			<!-- Contents -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@contentsHeight" parentOffsetY="v@headerHeight" />
+				</Components>
+				<SimpleScrollPanelV id="articleScrollPanel" width="v@articleAreaWidth" height="v@articleHeight" contentsHeight="1" moveThreshold="v@articlePanelScrollThreshold">
+					<Components>
+						<Layout width="v@articleAreaWidth" height="v@articleHeight" parentOffsetX="v@articleAreaMargin" parentOffsetY="v@articleAreaMargin" />
+					</Components>
+					<UIObject isPre="true">
+						<Components>
+							<Layout width="v@articleAreaWidth" height="v@articleHeight" />
+							<ShapeSet>
+								<Rect color="v@articleBGColor" width="v@articleAreaWidth" height="v@articleHeight" />
+							</ShapeSet>
+						</Components>
+					</UIObject>
+					<Contents>
+						<UIObject />
+					</Contents>
+				</SimpleScrollPanelV>
+				
+				<!-- Scroll Indicator -->
+				<UIObject>
+					<Components>
+						<Layout width="v@scrollMarkerWidth" height="v@articleHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" anchorOffsetX="v@articleAreaMargin" parentOffsetY="v@articleAreaMargin" />
+					</Components>
+					<UIObject id="scrollMarker">
+						<Components>
+							<Layout width="v@scrollMarkerWidth" height="42" />
+							<ShapeSet>
+								<Rect color="v@scrollMarkerColor" width="v@scrollMarkerWidth" height="42" />
+							</ShapeSet>
+						</Components>
+					</UIObject>
+				</UIObject>
+			</UIObject>
+		</UIObject>
+	</Prefab>
+</UIDesc>

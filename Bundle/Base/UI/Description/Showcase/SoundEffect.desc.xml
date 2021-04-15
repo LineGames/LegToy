@@ -1,0 +1,262 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<UIDesc>
+	<!-- Sound Effect Showcase UI Description -->
+	
+	<Import name="System" unit="System" />
+	<Import name="Common" unit="Common" />
+	<Import name="Font" unit="BaseFonts" />
+	<Import name="Texture" unit="Textures" />
+	<Import name="MainMenu" unit="Showcase/MainMenu" />
+	<Import name="Showcases" unit="Showcase/Showcase" />
+	<Import name="Close" unit="Showcase/CaseClose" />
+	
+	<!-- Common Value Definitions -->
+	<DefineScaledValue name="showcaseWidth" value="690" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="showcaseHeight" value="496" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	
+	<DefineColor name="uiBGColor" rgb="#363000" fa="0.92" />
+	
+	<DefineScaledValue name="headerHeight" value="72" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineExpression name="contentsHeight">
+		<Subtract>
+			<Reference type="float" var="showcaseHeight" />
+			<Reference type="float" var="headerHeight" />
+		</Subtract>
+	</DefineExpression>
+	
+	<!-- Showcase Main UI Prefab -->
+	<Prefab name="ShowcaseUIPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@showcaseWidth" height="v@showcaseHeight" parentOffsetX="v@MainMenu:contentsAreaCenterX" anchorRefRatioX="0.5" parentRefRatioY="0.5" anchorRefRatioY="0.5" />
+			</Components>
+			
+			<UIObject isPre="true">
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@showcaseHeight" />
+					<ShapeSet>
+						<Rect color="v@uiBGColor" width="v@showcaseWidth" height="v@showcaseHeight" />
+					</ShapeSet>
+				</Components>
+			</UIObject>
+			
+			<!-- Header -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@headerHeight" />
+				</Components>
+				<TextLabel raw="Sound Effect Showcase" fontClass="Font:BasicFontBold" color="v@Showcases:showcaseTitleFontColor" size="v@Showcases:showcaseTitleFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerTitleTextLeft" parentOffsetY="v@Showcases:headerTitleTextTop" />
+					</Components>
+				</TextLabel>
+				<TextLabel raw="Sound Effect showcase; example for sound play." fontClass="Font:BasicFont" color="v@Showcases:showcaseDescriptionFontColor" size="v@Showcases:showcaseDescriptionFontSize">
+					<Components>
+						<Layout sizeRef="object" parentOffsetX="v@Showcases:headerDescriptionTextLeft" parentOffsetY="v@Showcases:headerDescriptionTextTop" />
+					</Components>
+				</TextLabel>
+				
+				<UIObject>
+					<Components>
+						<Layout width="v@Close:closeButtonWidth" height="v@Close:closeButtonHeight" parentRefRatioX="1.0" anchorRefRatioX="1.0" />
+					</Components>
+					<ImportPrefab id="btnClose" prefab="Close:CloseButtonPrefab" />
+				</UIObject>
+			</UIObject>
+			
+			<!-- Contents -->
+			<UIObject>
+				<Components>
+					<Layout width="v@showcaseWidth" height="v@contentsHeight" parentOffsetY="v@headerHeight" />
+				</Components>
+				
+				<ImportPrefab id="btnPlaySE1" prefab="SE1PlayButtonPrefab" />
+				<ImportPrefab id="btnPlaySE2" prefab="SE2PlayButtonPrefab" />
+				<ImportPrefab id="btnPlaySE3" prefab="SE3PlayButtonPrefab" />
+				<ImportPrefab id="btnPlaySE4" prefab="SE4PlayButtonPrefab" />
+				<ImportPrefab id="btnPlaySE5" prefab="SE5PlayButtonPrefab" />
+				
+				<ImportPrefab id="btnPlayLong" prefab="LongPlayButtonPrefab" />
+			</UIObject>
+		</UIObject>
+	</Prefab>
+	
+	<!-- Buttons -->
+	<DefineScaledValue name="playButtonWidth" value="96" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="playButtonHeight" value="160" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="playButtonRow1Top" value="32" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="playButtonRow2Top" value="232" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="playButton1Left" value="108" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="playButton2Left" value="264" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="playButton3Left" value="30" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="playButton4Left" value="186" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="playButton5Left" value="342" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="longPlayButtonWidth" value="128" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	<DefineScaledValue name="longPlayButtonHeight" value="256" scale="v@Common:baseScale" quantize="floor" quantizeUnit="2" type="float" />
+	
+	<DefineScaledValue name="longPlayButtonLeft" value="524" scale="v@Common:baseScale" quantize="floor" type="float" />
+	<DefineScaledValue name="longPlayButtonTop" value="84" scale="v@Common:baseScale" quantize="floor" type="float" />
+	
+	<DefineScaledValue name="buttonTextFontSize" value="19.2" scale="v@Common:baseScale" type="float" />
+	
+	<Prefab name="SE1PlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@playButtonWidth" height="v@playButtonHeight" parentOffsetX="v@playButton1Left" parentOffsetY="v@playButtonRow1Top" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_Push" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="SE #1" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="SE2PlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@playButtonWidth" height="v@playButtonHeight" parentOffsetX="v@playButton2Left" parentOffsetY="v@playButtonRow1Top" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_Push" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="SE #2" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="SE3PlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@playButtonWidth" height="v@playButtonHeight" parentOffsetX="v@playButton3Left" parentOffsetY="v@playButtonRow2Top" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_Push" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="SE #3" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="SE4PlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@playButtonWidth" height="v@playButtonHeight" parentOffsetX="v@playButton4Left" parentOffsetY="v@playButtonRow2Top" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_Push" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="SE #4" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="SE5PlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@playButtonWidth" height="v@playButtonHeight" parentOffsetX="v@playButton5Left" parentOffsetY="v@playButtonRow2Top" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@playButtonWidth" height="v@playButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_Push" width="v@playButtonWidth" height="v@playButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="SE #5" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+	
+	<Prefab name="LongPlayButtonPrefab">
+		<UIObject>
+			<Components>
+				<Layout width="v@longPlayButtonWidth" height="v@longPlayButtonHeight" parentOffsetX="v@longPlayButtonLeft" parentOffsetY="v@longPlayButtonTop" />
+			</Components>
+			
+			<UIObject id="normal">
+				<Components>
+					<Layout width="v@longPlayButtonWidth" height="v@longPlayButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_Normal" width="v@longPlayButtonWidth" height="v@longPlayButtonHeight" />
+				</Components>
+			</UIObject>
+			<UIObject id="playing">
+				<Components>
+					<Layout width="v@longPlayButtonWidth" height="v@longPlayButtonHeight" />
+					<Patch patch="Texture:UIPatch:btn_listen_long_Push" width="v@longPlayButtonWidth" height="v@longPlayButtonHeight" />
+				</Components>
+			</UIObject>
+			<TextLabel fontClass="Font:BasicFontBold" raw="Long" size="v@buttonTextFontSize">
+				<Components>
+					<Layout sizeRef="object" parentRefRatioX="0.5" anchorRefRatioX="0.5" parentRefRatioY="0.51" anchorRefRatioY="0.5" />
+				</Components>
+			</TextLabel>
+		</UIObject>
+	</Prefab>
+</UIDesc>
