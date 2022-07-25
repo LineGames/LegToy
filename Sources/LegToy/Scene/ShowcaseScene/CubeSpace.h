@@ -11,6 +11,9 @@
 // Leggiero.Basic
 #include <Basic/LeggieroBasic.h>
 
+// Standard Library
+#include <memory>
+
 // External Library
 #include <glm/glm.hpp>
 

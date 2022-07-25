@@ -202,7 +202,7 @@ namespace LegToy
 			Leggiero::LUI::UICoordinateType buttonHeight = static_cast<Leggiero::LUI::UICoordinateType>(_UIExampleInternal::kButtonBaseHeight * uiBaseScale);
 
 			std::shared_ptr<Leggiero::LUI::Element::UIElementFixedText> buttonText(std::make_shared<Leggiero::LUI::Element::UIElementFixedText>(uiManager, Leggiero::Font::TypesetCachedGlyphesHorizontalSingleLine(glyphManager,
-				u8"Test",
+				(const char *)u8"Test",
 				m_testFontSet, static_cast<float>(buttonHeight * _UIExampleInternal::kButtonHeightFontSizeRatio), Leggiero::Font::GlyphStyleType::kBold, Leggiero::Graphics::HorizontalAlignType::kLeft, Leggiero::Graphics::VerticalAlignType::kTop,
 				Leggiero::Graphics::GLByteARGB::kWhite, _UIExampleInternal::kButtonTextBaseStrokeWidth, Leggiero::Graphics::GLByteARGB::kBlack)));
 			buttonText->ChangeLayoutComponent(std::make_shared<Leggiero::LUI::UILayoutComponent>(std::make_shared<Leggiero::LUI::UIVisualSizeSubComponent>(buttonText)));
@@ -241,7 +241,7 @@ namespace LegToy
 			m_testPopup->AddPostUIObject(safeAreaUIObject);
 
 			std::shared_ptr<Leggiero::LUI::Element::UIElementFixedText> safeAreaText(std::make_shared<Leggiero::LUI::Element::UIElementFixedText>(uiManager, Leggiero::Font::TypesetCachedGlyphesHorizontalSingleLine(glyphManager,
-				u8"Safe Area",
+				(const char *)u8"Safe Area",
 				m_testFontSet, static_cast<float>(_UIExampleInternal::kSafeAreaFontBaseSize * uiBaseScale), Leggiero::Font::GlyphStyleType::kBold, Leggiero::Graphics::HorizontalAlignType::kLeft, Leggiero::Graphics::VerticalAlignType::kTop,
 				Leggiero::Graphics::GLByteARGB::kWhite)));
 			safeAreaText->ChangeLayoutComponent(std::make_shared<Leggiero::LUI::UILayoutComponent>(std::make_shared<Leggiero::LUI::UIVisualSizeSubComponent>(safeAreaText)));

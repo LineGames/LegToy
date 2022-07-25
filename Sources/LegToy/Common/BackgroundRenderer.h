@@ -12,6 +12,7 @@
 #include <Basic/LeggieroBasic.h>
 
 // Standard Library
+#include <memory>
 #include <vector>
 
 // External Library
