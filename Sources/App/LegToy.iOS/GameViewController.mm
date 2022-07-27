@@ -31,4 +31,14 @@
     [super viewDidLoad];
 }
 
+
+- (id)getInitialShowingUIView
+{
+    // Start color view
+    UIView *creatingView = [[UIView alloc] init];
+    creatingView.layer.backgroundColor = [[UIColor colorWithRed:0.105882f green:0.372549 blue:0.525490f alpha:1.0f] CGColor];
+    
+    return creatingView;
+}
+
 @end
