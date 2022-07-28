@@ -47,6 +47,7 @@
 		168F027425D77BE200D1B2CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 168F027325D77BE200D1B2CF /* Foundation.framework */; };
 		168F028525D77DF300D1B2CF /* LegToyiOSSetting.mm in Sources */ = {isa = PBXBuildFile; fileRef = 168F028325D77DF300D1B2CF /* LegToyiOSSetting.mm */; };
 		168F02C725D81EE100D1B2CF /* libLegToy.Game.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 168F02B925D81EBB00D1B2CF /* libLegToy.Game.a */; };
+		16EB4D0C28919E32003CA18C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16EB4D0B28919E32003CA18C /* QuartzCore.framework */; };
 		16F2696025D9733500C1530C /* libLMFileSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1630496625D2CB650062C67F /* libLMFileSystem.a */; };
 		16F2697F25DAC07B00C1530C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F2697E25DAC07B00C1530C /* WebKit.framework */; };
 		16F269AD25E6ACCE00C1530C /* libfreetype.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 16F269AC25E6ACA300C1530C /* libfreetype.a */; };
@@ -360,6 +361,7 @@
 		168F028325D77DF300D1B2CF /* LegToyiOSSetting.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = LegToyiOSSetting.mm; path = Sources/App/LegToy.iOS/LegToyiOSSetting.mm; sourceTree = "<group>"; };
 		168F028425D77DF300D1B2CF /* LegToyiOSSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LegToyiOSSetting.h; path = Sources/App/LegToy.iOS/LegToyiOSSetting.h; sourceTree = "<group>"; };
 		168F02B425D81EBB00D1B2CF /* LegToy.Game.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = LegToy.Game.xcodeproj; path = Sources/LegToy/LegToy.Game.xcodeproj; sourceTree = "<group>"; };
+		16EB4D0B28919E32003CA18C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		16F2697E25DAC07B00C1530C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		16F269AC25E6ACA300C1530C /* libfreetype.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libfreetype.a; path = ../Engine/Libraries/Dependent/iOS/FreeType/libs/libfreetype.a; sourceTree = "<group>"; };
 		16F269D525E6ADE100C1530C /* Font.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Font.xcodeproj; path = ../Engine/Modules/Font/Font.xcodeproj; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				163045B025D1824B0062C67F /* libLCBasic.a in Frameworks */,
 				162C476825E7F31C00956A15 /* libLMSound.a in Frameworks */,
 				163045DE25D18A620062C67F /* libLCUtility.a in Frameworks */,
+				16EB4D0C28919E32003CA18C /* QuartzCore.framework in Frameworks */,
 				163045DD25D18A620062C67F /* libLCEngine.a in Frameworks */,
 				16F26A8025E6B93A00C1530C /* AVFoundation.framework in Frameworks */,
 				1630489E25D2C2770062C67F /* libLMApplication.a in Frameworks */,
@@ -670,6 +673,7 @@
 		18A337DDFE3D687E2190B3D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16EB4D0B28919E32003CA18C /* QuartzCore.framework */,
 				168F027325D77BE200D1B2CF /* Foundation.framework */,
 				168F027125D77BC900D1B2CF /* UIKit.framework */,
 				16F2697E25DAC07B00C1530C /* WebKit.framework */,
@@ -1278,7 +1282,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1000;
+				CURRENT_PROJECT_VERSION = 1001;
 				DEVELOPMENT_TEAM = 44TNFCG75S;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1290,7 +1294,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.10.0;
+				MARKETING_VERSION = 0.10.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.leggiero.LegToy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
