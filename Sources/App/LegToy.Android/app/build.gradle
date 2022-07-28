@@ -9,8 +9,8 @@ android {
         applicationId "com.leggiero.LegToy"
         minSdk 21
         targetSdk 32
-        versionCode 1000
-        versionName "0.10.0"
+        versionCode 1001
+        versionName "0.10.1"
 
         externalNativeBuild {
             cmake {
